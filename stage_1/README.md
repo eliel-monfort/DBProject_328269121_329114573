@@ -115,8 +115,8 @@ Logs maintenance activities for vehicles.
 ## 📚 ERD Suggestion
 
 the ERD diagram:
-![ERD](stage_1/ERD.png)
+![ERD](ERD.png)
 
 the DRD diagram:
-![DRD](stage_1/DRD.png)
+![DRD](DRD.png)
 
