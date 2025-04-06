@@ -114,10 +114,9 @@ Logs maintenance activities for vehicles.
 
 ## 📚 ERD Suggestion
 
-To better visualize this schema, you can use any of the following tools to create an ERD:
-- [dbdiagram.io](https://dbdiagram.io/)
-- [drawSQL](https://drawsql.app/)
-- [Lucidchart](https://www.lucidchart.com/)
-- [MySQL Workbench](https://www.mysql.com/products/workbench/)
+the ERD diagram:
+![ERD](ERD.png)
 
+the DRD diagram:
+![DRD](DRD.png)
 
