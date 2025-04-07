@@ -177,8 +177,8 @@ The **Armored Warehouse Management System** was built to manage logistical data 
 ## 📚 ERD Suggestion
 
 the ERD diagram:
-![ERD](stage_1/ERD.png)
+![DWMS-ERD](https://github.com/user-attachments/assets/cb65c0a5-8b11-4311-aa65-35e0c4423bd1)
 
 the DRD diagram:
-![DRD](stage_1/DRD.png)
+![DWMS-DSD](https://github.com/user-attachments/assets/547bf417-e28c-4b21-aa99-95c7160746a7)
 
