@@ -161,5 +161,7 @@ The **Armored Warehouse Management System** was built to manage logistical data 
 
 > 📷 Please upload the following diagrams manually:
 
-- **ERD Diagram**: `Stage 1/Images/DWMS-ERD.png`
-- **DSD Diagram**: `Stage 1/Images/DWMS-DSD.png`
+- **ERD Diagram**:
+  ![DWMS-ERD](Stage 1/Images/DWMS-ERD.png)
+- **DSD Diagram**:
+  ![DWMS-ERD](Stage 1/Images/DWMS-ERD.png)
