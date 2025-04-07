@@ -8,8 +8,8 @@
 # 🛡️ Armored Warehouse Management System
 
 ## 👤 Authors:
-- Eliel Monfort  
-- Yehoshua Steinitz  
+- Eliel Monfort - 328269121
+- Yehoshua Steinitz - 329114573
 
 ## 🎯 Selected Unit:
 Logistics Department – Armored Corps
@@ -161,24 +161,5 @@ The **Armored Warehouse Management System** was built to manage logistical data 
 
 > 📷 Please upload the following diagrams manually:
 
-- **ERD Diagram**: `images/erd.png`
-- **DSD Diagram**: `images/dsd.png`
-
-```bash
-# Example file structure:
-.
-├── README.md
-├── images/
-│   ├── erd.png
-│   └── dsd.png
-
----
-
-## 📚 ERD Suggestion
-
-the ERD diagram:
-![DWMS-ERD](https://github.com/user-attachments/assets/cb65c0a5-8b11-4311-aa65-35e0c4423bd1)
-
-the DRD diagram:
-![DWMS-DSD](https://github.com/user-attachments/assets/547bf417-e28c-4b21-aa99-95c7160746a7)
-
+- **ERD Diagram**: `Stage 1/Images/DWMS-ERD.png`
+- **DSD Diagram**: `Stage 1/Images/DWMS-DSD.png`
