@@ -5,110 +5,172 @@
 ![Status](https://img.shields.io/badge/Status-Stable-brightgreen?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 
-🪖 the armored corps Asset & Mission Management Database 🗂️
-A complete schema for organizing the armored corps: warehouses, missions, personnel, equipment, and maintenance operations.
+# 🛡️ Armored Warehouse Management System
 
+## 👤 Authors:
+- Eliel Monfort  
+- Yehoshua Steinitz  
+
+## 🎯 Selected Unit:
+Logistics Department – Armored Corps
+
+---
 
 ## 📚 Table of Contents
 
-- [📦 Features](#-features)
-- [🧱 Entity-Relationship Structure](#-entity-relationship-structure)
-  - [🏢 Warehouse](#-warehouse)
-  - [🪖 Soldier](#-soldier)
-  - [🎯 Mission](#-mission)
-  - [🧰 Equipment](#-equipment)
-  - [🔧 Equipment_Type](#-equipment_type)
-  - [🚗 Armored_Vehicle](#-armored_vehicle)
-  - [🛠️ Maintenance](#-maintenance)
-- [🔁 Relationship Tables](#-relationship-tables)
-  - [`soldier_mission`](#-soldier_mission)
-  - [`contains_equipment`](#-contains_equipment)
-  - [`houses_vehicle`](#-houses_vehicle)
-  - [`undergoes`](#-undergoes)
-- [📚 ERD Suggestion](#-erd-suggestion)
+1. [📘 Introduction](#-introduction)
+2. [🗂️ Entities and Attributes](#-entities-and-attributes)
+3. [🔗 Relationships](#-relationships)
+4. [📈 ERD & DSD Diagrams](#-erd--dsd-diagrams)
+5. [🧠 Design Decisions](#-design-decisions)
+6. [📥 Data Insertion Methods](#-data-insertion-methods)
+7. [💾 Backup and Restore](#-backup-and-restore)
 
 ---
 
-## 📦 Features
+## 📘 Introduction
 
-- Store and track **warehouses** and their contents (equipment & vehicles)
-- Manage **equipment** and its associated **types**
-- Maintain records of **soldiers** and their assigned **missions**
-- Associate **armored vehicles** with missions and maintenance logs
-- Track **maintenance history** for vehicles
-- Model complex many-to-many relationships via junction tables
+The **Armored Warehouse Management System** was built to manage logistical data related to military equipment, armored vehicles, personnel, maintenance operations, and missions within the Armored Corps.
+
+### Key Functionalities:
+- Track warehouse equipment, stock, and assignments.
+- Monitor maintenance history of vehicles and parts.
+- Manage military units, missions, soldiers, and commanders.
+- Maintain a full historical log of equipment repairs and usage.
 
 ---
 
-## 🧱 Entity-Relationship Structure
+## 🗂️ Entities and Attributes
 
-### 🏢 Warehouse
-- `warehouse_id` (PK)
+### 1. `Warehouse`
+- `warehouse_ID` (PK)
 - `location`
 - `capacity`
 - `opened_date`
 - `last_inspection_date`
 
-### 🪖 Soldier
-- `soldier_id` (PK)
-- `first_name`
-- `last_name`
-- `rank`
-- `date_of_birth`
-- `enlistment_date`
-
-### 🎯 Mission
-- `mission_id` (PK)
+### 2. `Mission`
+- `mission_ID` (PK)
 - `mission_name`
-- `mission_date`
 - `location`
+- `objective`
 
-### 🧰 Equipment
-- `equipment_id` (PK)
-- `name`
-- `purchase_date`
-- `warranty_expiration`
-- `type_id` (FK → Equipment_Type)
-
-### 🔧 Equipment_Type
-- `type_id` (PK)
-- `type_name` (Unique)
+### 3. `Equipment_Type`
+- `type_ID` (PK)
+- `type_name`
 - `description`
+- `category`
 
-### 🚗 Armored_Vehicle
-- `vehicle_id` (PK)
+### 4. `Armored_Vehicle`
+- `vehicle_ID` (PK)
 - `model`
-- `year_of_manufacture`
+- `manufacture_year`
 - `last_maintenance_date`
 - `next_maintenance_date`
-- `mission_id` (FK)
+- `warehouse_ID` (FK)
+- `mission_ID` (FK)
 
-### 🛠️ Maintenance
-- `maintenance_id` (PK)
+### 5. `Maintenance`
+- `maintenance_ID` (PK)
 - `performed_on`
 - `next_due`
 - `description`
 
+### 6. `Personnel` (Superclass)
+- `personnel_ID` (PK)
+- `first_name`
+- `last_name`
+- `date_of_birth`
+
+### 7. `Commander` (inherits from `Personnel`)
+- `personnel_ID` (PK, FK)
+- `command_level`
+- `years_of_experience`
+
+### 8. `Soldier` (inherits from `Personnel`)
+- `personnel_ID` (PK, FK)
+- `rank`
+- `enlistment_date`
+- `unit_ID` (FK)
+
+### 9. `Unit`
+- `unit_ID` (PK)
+- `unit_name`
+- `base_location`
+- `personnel_ID` (FK → Commander)
+
+### 10. `Vehicle_Part` (Weak Entity)
+- `part_ID` (Partial PK)
+- `vehicle_ID` (Partial PK, FK)
+- `part_name`
+- `cost_of_repair`
+- `replaced_on`
+
+### 11. `Undergoes` (Associative Entity)
+- `maintenance_ID` (PK, FK)
+- `vehicle_ID` (PK, FK)
+- `notes`
+- `duration_hours`
+
+### 12. `Problem_With` (Associative Entity)
+- `maintenance_ID` (PK, FK)
+- `part_ID` (PK)
+- `vehicle_ID` (PK, FK)
+  
+### 13. `Equipment`
+- `equipment_ID` (PK)
+- `name`
+- `purchase_date`
+- `warranty_expiration`
+- `warehouse_ID` (FK)
+- `personnel_ID` (nullable FK → Soldier)
+- `type_ID` (FK)
+
+### 14. `Soldier_Mission_Assignment`
+- `mission_ID` (PK, FK)
+- `personnel_ID` (PK, FK)
+- `role`
+- `join_date`
+- `leave_date`
+
+### 15. `Unit_Mission_Assignment`
+- `mission_ID` (PK, FK)
+- `unit_ID` (PK, FK)
+- `assigned_date`
+
 ---
 
-## 🔁 Relationship Tables
+## 🔗 Relationships
 
-### 👥 `soldier_mission`
-Tracks soldier participation in missions.
-- Composite PK: (`soldier_id`, `mission_id`)
-- `role`, `join_date`, `leave_date`
+- **Commander–Unit**: One-to-many (Each commander leads one unit, a unit has one commander).
+- **Soldier–Unit**: Many-to-one (Each soldier belongs to one unit).
+- **Soldier–Mission (Soldier_Mission_Assignment)**: Many-to-many with additional attributes.
+- **Unit–Mission (Unit_Mission_Assignment)**: Many-to-many with additional attributes.
+- **Vehicle–Warehouse**: Many-to-one (Each vehicle is stored in one warehouse).
+- **Vehicle–Mission**: Optional many-to-one (Vehicles may be assigned to missions).
+- **Maintenance–Vehicle (Undergoes)**: Many-to-many with duration and notes.
+- **Maintenance–Part (Problem_With)**: Many-to-many.
+- **Equipment–Personnel**: Optional many-to-one (Equipment may be assigned to a soldier).
+- **Equipment–Warehouse**: Many-to-one.
+- **Vehicle_Part–Vehicle**: Weak entity with identifying relationship.
+- **Equipment–Equipment_Type**: Many-to-one.
 
-### 🏗️ `contains_equipment`
-Links equipment to the warehouse it is stored in.
-- Composite PK: (`warehouse_id`, `equipment_id`)
+---
 
-### 🏠 `houses_vehicle`
-Links vehicles to the warehouse they are stored in.
-- Composite PK: (`warehouse_id`, `vehicle_id`)
+## 📈 ERD & DSD Diagrams
 
-### 🔄 `undergoes`
-Logs maintenance activities for vehicles.
-- Composite PK: (`vehicle_id`, `maintenance_id`)
+> 📷 Please upload the following diagrams manually:
+
+- **ERD Diagram**: `images/erd.png`
+- **DSD Diagram**: `images/dsd.png`
+
+```bash
+# Example file structure:
+.
+├── README.md
+├── images/
+│   ├── erd.png
+│   └── dsd.png
 
 ---
 
