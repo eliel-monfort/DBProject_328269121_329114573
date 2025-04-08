@@ -17,140 +17,205 @@
 
 1. [📘 Introduction](#-introduction)
 2. [🗂️ Entities and Attributes](#-entities-and-attributes)
-3. [🔗 Relationships](#-relationships)
-4. [📈 ERD & DSD Diagrams](#-erd--dsd-diagrams)
-5. [🧠 Design Decisions](#-design-decisions)
-6. [📥 Data Insertion Methods](#-data-insertion-methods)
-7. [💾 Backup and Restore](#-backup-and-restore)
+4. [🔗 Relationships](#-relationships)
+5. [📈 ERD & DSD Diagrams](#-erd--dsd-diagrams)
+6. [🧠 Design Decisions](#-design-decisions)
+7. [📥 Data Insertion Methods](#-data-insertion-methods)
+8. [💾 Backup and Restore](#-backup-and-restore)
 
 ---
 
 ## 📘 Introduction
 
-The **Armored Warehouse Management System** was built to manage logistical data related to military equipment, armored vehicles, personnel, maintenance operations, and missions within the Armored Corps.
+This project is a **Database Management System** for the **Logistics Unit of the Armored Corps**.
 
-### Key Functionalities:
-- Track warehouse equipment, stock, and assignments.
-- Monitor maintenance history of vehicles and parts.
-- Manage military units, missions, soldiers, and commanders.
-- Maintain a full historical log of equipment repairs and usage.
+The system is designed to manage all aspects related to **military equipment**, **armored vehicles**, **soldiers**, **commanders**, **missions**, and **vehicle maintenance**.
+
+It stores important data and enables efficient tracking of:
+
+- Equipment stored in warehouses  
+- Which soldier or unit is using specific equipment  
+- Armored vehicles and their maintenance history  
+- Soldiers, commanders, and their assigned units  
+- Missions and which units and soldiers are involved  
+
+The goal is to build a smart and organized database that supports real military operations and provides accurate, real-time information for decision-making.
+
+---
+
+# 🛡️ Armored Warehouse Management Database
+
+This project describes the database structure for managing armored warehouses, vehicles, missions, personnel, equipment, and maintenance operations.
 
 ---
 
 ## 🗂️ Entities and Attributes
 
-### 1. `Warehouse`
-- `warehouse_ID` (PK)
-- `location`
-- `capacity`
-- `opened_date`
-- `last_inspection_date`
+### 🏢 Warehouse
+Represents a storage location for vehicles and equipment.
+- `warehouse ID` (PK): Unique warehouse identifier
+- `location`: Physical location
+- `capacity`: Storage capacity
+- `opened date`: Date the warehouse was opened
+- `last inspection_date`: Last inspection date
 
-### 2. `Mission`
-- `mission_ID` (PK)
-- `mission_name`
-- `location`
-- `objective`
+### 🎯 Mission
+Represents a military mission.
+- `mission ID` (PK): Unique mission identifier
+- `mission name`: Name of the mission
+- `location`: Mission location
+- `objective`: Mission objective
 
-### 3. `Equipment_Type`
-- `type_ID` (PK)
-- `type_name`
-- `description`
-- `category`
+### 🧰 Equipment Type
+Defines categories of equipment.
+- `type ID` (PK): Unique type identifier
+- `type name`: Type name
+- `description`: Detailed description
+- `category`: General category of the equipment
 
-### 4. `Armored_Vehicle`
-- `vehicle_ID` (PK)
-- `model`
-- `manufacture_year`
-- `last_maintenance_date`
-- `next_maintenance_date`
-- `warehouse_ID` (FK)
-- `mission_ID` (FK)
+### 🚛 Armored Vehicle
+Represents an armored vehicle.
+- `vehicle ID` (PK): Unique vehicle identifier
+- `model`: Vehicle model
+- `manufacture year`: Year of manufacture
+- `last_maintenance date`: Date of last maintenance
+- `next_maintenance date`: Planned date for next maintenance
 
-### 5. `Maintenance`
-- `maintenance_ID` (PK)
-- `performed_on`
-- `next_due`
-- `description`
+### 🔧 Maintenance
+Represents maintenance actions.
+- `maintenance ID` (PK): Unique maintenance identifier
+- `performed on`: Date maintenance was performed
+- `next due`: Date of next scheduled maintenance
+- `description`: Description of the maintenance
 
-### 6. `Personnel` (Superclass)
-- `personnel_ID` (PK)
-- `first_name`
-- `last_name`
-- `date_of_birth`
+### 👤 Personnel (Superclass)
+Represents a person, either a soldier or a commander.
+- `personnel ID` (PK): Unique personnel identifier
+- `first name`: First name
+- `last name`: Last name
+- `date of birth`: Date of birth
 
-### 7. `Commander` (inherits from `Personnel`)
-- `personnel_ID` (PK, FK)
-- `command_level`
-- `years_of_experience`
+### 🧑‍✈️ Commander (inherits from `Personnel`)
+Subtype of Personnel – represents a commander.
+- `command level`: Command level
+- `years of experience`: Years of experience
 
-### 8. `Soldier` (inherits from `Personnel`)
-- `personnel_ID` (PK, FK)
-- `rank`
-- `enlistment_date`
-- `unit_ID` (FK)
+### 🪖 Soldier (inherits from `Personnel`)
+Subtype of Personnel – represents a soldier.
+- `rank`: Military rank
+- `enlistment date`: Enlistment date
 
-### 9. `Unit`
-- `unit_ID` (PK)
-- `unit_name`
-- `base_location`
-- `personnel_ID` (FK → Commander)
+### 🪖 Unit
+Represents a military unit.
+- `unit ID` (PK): Unique unit identifier
+- `unit name`: Unit name
+- `base location`: Base location
 
-### 10. `Vehicle_Part` (Weak Entity)
-- `part_ID` (Partial PK)
-- `vehicle_ID` (Partial PK, FK)
-- `part_name`
-- `cost_of_repair`
-- `replaced_on`
+### ⚙️ Vehicle Part
+Represents a part belonging to a specific vehicle (weak entity).
+- `part ID` (Partial PK): Part identifier
+- `part name`: Part name
+- `Cost of repair`: Repair cost
+- `replaced on`: Replacement date
 
-### 11. `Undergoes` (Associative Entity)
-- `maintenance_ID` (PK, FK)
-- `vehicle_ID` (PK, FK)
-- `notes`
-- `duration_hours`
+### 🔄 Undergoes
+Associates maintenance procedures with vehicles.
+- `maintenance ID` (PK, FK): Maintenance identifier
+- `vehicle ID` (PK, FK): Vehicle identifier
+- `notes`: Notes regarding the maintenance
+- `duration hours`: Duration in hours
 
-### 12. `Problem_With` (Associative Entity)
-- `maintenance_ID` (PK, FK)
-- `part_ID` (PK)
-- `vehicle_ID` (PK, FK)
-  
-### 13. `Equipment`
-- `equipment_ID` (PK)
-- `name`
-- `purchase_date`
-- `warranty_expiration`
-- `warehouse_ID` (FK)
-- `personnel_ID` (nullable FK → Soldier)
-- `type_ID` (FK)
+### 🧩 Problem With
+Represents parts that had issues during maintenance.
+- `maintenance ID` (PK, FK): Maintenance identifier
+- `part ID` (PK): Part identifier  
+- `vehicle ID` (PK, FK): Vehicle identifier  
 
-### 14. `Soldier_Mission_Assignment`
-- `mission_ID` (PK, FK)
-- `personnel_ID` (PK, FK)
-- `role`
-- `join_date`
-- `leave_date`
+### 🎒 Equipment
+Represents a piece of equipment.
+- `equipment ID` (PK): Unique equipment identifier
+- `name`: Equipment name
+- `purchase date`: Date of purchase
+- `warranty expiration`: Warranty expiration date
 
-### 15. `Unit_Mission_Assignment`
-- `mission_ID` (PK, FK)
-- `unit_ID` (PK, FK)
-- `assigned_date`
+### 🪖 Soldier Mission Assignment
+Associates soldiers with missions.
+- `mission ID` (PK, FK): Mission identifier
+- `personnel ID` (PK, FK): Soldier’s personnel ID
+- `role`: Role during the mission
+- `join date`: Start date
+- `leave date`: End date
+
+### 🏹 Unit Mission Assignment
+Associates military units with missions.
+- `mission ID` (PK, FK): Mission identifier
+- `unit ID` (PK, FK): Unit identifier
+- `assigned date`: Date assigned to mission
 
 ---
 
 ## 🔗 Relationships
 
-- **Commander–Unit**: One-to-many (Each commander leads one unit, a unit has one commander).
-- **Soldier–Unit**: Many-to-one (Each soldier belongs to one unit).
-- **Soldier–Mission (Soldier_Mission_Assignment)**: Many-to-many with additional attributes.
-- **Unit–Mission (Unit_Mission_Assignment)**: Many-to-many with additional attributes.
-- **Vehicle–Warehouse**: Many-to-one (Each vehicle is stored in one warehouse).
-- **Vehicle–Mission**: Optional many-to-one (Vehicles may be assigned to missions).
-- **Maintenance–Vehicle (Undergoes)**: Many-to-many with duration and notes.
-- **Maintenance–Part (Problem_With)**: Many-to-many.
-- **Equipment–Personnel**: Optional many-to-one (Equipment may be assigned to a soldier).
-- **Equipment–Warehouse**: Many-to-one.
-- **Vehicle_Part–Vehicle**: Weak entity with identifying relationship.
-- **Equipment–Equipment_Type**: Many-to-one.
+### Commander Unit Assignment
+- **Linked Entities:** Commander ⟷ Unit
+- **Type:** One-to-One
+- **Explanation:** Each unit is led by one commander, and a commander leads only one unit.
+
+### Soldier Unit Assignment
+- **Linked Entities:** Soldier ⟷ Unit
+- **Type:** Many-to-One
+- **Explanation:** Each soldier belongs to one unit, while a unit can have many soldiers.
+
+### Soldier Mission Assignment
+- **Linked Entities:** Soldier ⟷ Mission
+- **Type:** Many-to-Many
+- **Attributes:** 
+- **Explanation:** Soldiers can be assigned to multiple missions, with additional details such as role and dates.
+
+### Unit ⟷ Mission (`Unit_Mission_Assignment`)
+- **Linked Entities:**
+- **Type:** Many-to-Many with assignment date  
+- **Explanation:** Units can participate in multiple missions; each assignment has a specific date.
+
+### 🚚 Vehicle ⟷ Warehouse
+- **Linked Entities:**
+- **Type:** Many-to-One  
+- **Explanation:** Each vehicle is stored in one warehouse, and a warehouse can store many vehicles.
+
+### 🎯 Vehicle ⟷ Mission
+- **Linked Entities:**
+- **Type:** Optional Many-to-One  
+- **Explanation:** A vehicle may be assigned to a mission, but it's not mandatory.
+
+### 🧪 Maintenance ⟷ Vehicle (`Undergoes`)
+- **Linked Entities:**
+- **Type:** Many-to-Many with attributes  
+- **Explanation:** A maintenance operation may involve several vehicles, each with specific notes and duration.
+
+### ⚙️ Maintenance ⟷ Part (`Problem_With`)
+- **Linked Entities:**
+- **Type:** Many-to-Many  
+- **Explanation:** Each maintenance action can report issues with multiple parts in one or more vehicles.
+
+### 📦 Equipment ⟷ Personnel
+- **Linked Entities:**
+- **Type:** Optional Many-to-One  
+- **Explanation:** Equipment may optionally be assigned to a soldier.
+
+### 🏚️ Equipment ⟷ Warehouse
+- **Linked Entities:**
+- **Type:** Many-to-One  
+- **Explanation:** Equipment is stored in a specific warehouse.
+
+### 🧩 Vehicle_Part ⟷ Vehicle
+- **Linked Entities:**
+- **Type:** Weak Entity Relationship  
+- **Explanation:** A part belongs to a specific vehicle and cannot exist independently.
+
+### 🔧 Equipment ⟷ Equipment_Type
+- **Linked Entities:**
+- **Type:** Many-to-One  
+- **Explanation:** Each equipment item belongs to a defined type, such as weapon, communication device, etc.
 
 ---
 
