@@ -11,9 +11,6 @@
 - Eliel Monfort - 328269121
 - Yehoshua Steinitz - 329114573
 
-## 🎯 Selected Unit:
-Logistics Department – Armored Corps
-
 ---
 
 ## 📚 Table of Contents
