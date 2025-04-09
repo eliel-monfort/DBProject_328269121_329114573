@@ -208,8 +208,7 @@ Represents a military mission.
 ## 📈 ERD & DSD Diagrams
 
 - **ERD Diagram**:
-![DWMS-ERD](Stage_1/Images/DWMS-ERD.png)
-
+![ERD](Stage_1/Images/ERD.png)
 
 - **DSD Diagram**:
-![DWMS-DSD](Stage_1/Images/DWMS-DSD.png)
+![DSD](Stage_1/Images/DSD.png)
