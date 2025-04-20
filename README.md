@@ -230,14 +230,19 @@ I used [Mockaroo](https://mockaroo.com) to generate realistic mock data for the 
 The generated data was downloaded as CSV files and then imported using PostgreSQL import tools.
 
 📸 Screenshot of Mockaroo configuration:
+- **Warehouse Field Definition**
 ![Mockaroo Config](Stage_1/mockarooFiles/Images/Warehouse_Field_Definition.png)
 
+- **Mission Dield Definition**
 ![Mockaroo Config](Stage_1/mockarooFiles/Images/Mission_field_definition.png)
 
+- **Personnel Field Definition**
 ![Mockaroo Config](Stage_1/mockarooFiles/Images/Personnel_field_definition.png)
 
+- **Equipment Type Field Definition**
 ![Mockaroo Config](Stage_1/mockarooFiles/Images/Equipment_Type_Field_Definition.png)
 
+- **Maintenance Field Definition**
 ![Mockaroo Config](Stage_1/mockarooFiles/Images/Maintenance_Field_Definition.png)
 
 📸 Screenshot of data upload to database:
