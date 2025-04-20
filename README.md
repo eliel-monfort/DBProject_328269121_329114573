@@ -212,3 +212,60 @@ Represents a military mission.
 
 - **DSD Diagram**:
 ![DSD](Stage_1/Images/DSD.png)
+
+---
+
+# 📦 Data Insertion Documentation
+
+## Method 1: Mockaroo Data Generation
+
+I used [Mockaroo](https://mockaroo.com) to generate realistic mock data for the following tables:
+
+- `Warehouse`
+- `Mission`
+- `Personnel`
+- `Equipment Type`
+- `Maintenance`
+
+The generated data was downloaded as CSV files and then imported using PostgreSQL import tools.
+
+📸 Screenshot of Mockaroo configuration:  
+![Mockaroo Config](images/mockaroo_config.png) <!-- ### -->
+
+📸 Screenshot of data upload/import:  
+![Import Screenshot](images/mockaroo_import.png) <!-- ### -->
+
+## Method 2: CSV File Insertion
+
+I asked ChatGPT to generate 5 realistic CSV files with 500 rows each for the following tables:
+
+- `Armored Vehicle`
+- `Commander`
+- `Soldier`
+- `Unit`
+- `Vehicle Part`
+
+The CSV files were manually reviewed and then inserted into the database using PostgreSQL's CSV import functionality.
+
+📸 Screenshot of the CSV files used:
+![CSV Files](images/csv_files_screenshot.png) <!-- ### -->
+
+## Method 2: Python Script
+
+For the second method, I wrote a Python script using `pandas` and `psycopg2` to programmatically insert data into the following tables:
+
+- `?????????`
+
+📸 Screenshot of Python script execution:  
+![Python Script Execution](images/python_script.png) <!-- ### -->
+
+📸 Screenshot of data in pgAdmin:  
+![pgAdmin Result](images/pgadmin_result.png) <!-- ### -->
+
+## ✅ Summary
+
+| Method   | Tables Covered                   | Status     |
+|----------|----------------------------------|------------|
+| Mockaroo | Warehouse, Mission, Personnel, Equipment Type, Maintenance | ✅ Completed |
+| CSV      | Armored Vehicle, Commander, Soldier, Unit, Vehicle Part | ✅ Completed |
+| Python   | ????, ????, ????, ????, ???? | ✅ Completed |
