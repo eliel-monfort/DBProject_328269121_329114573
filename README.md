@@ -208,10 +208,10 @@ Represents a military mission.
 ## 📈 ERD & DSD Diagrams
 
 - **ERD Diagram**:
-![ERD](Stage_1/Images/ERD.png)
+![ERD](Stage_1/ERD.png)
 
 - **DSD Diagram**:
-![DSD](Stage_1/Images/DSD.png)
+![DSD](Stage_1/DSD.png)
 
 ---
 
@@ -229,10 +229,18 @@ I used [Mockaroo](https://mockaroo.com) to generate realistic mock data for the 
 
 The generated data was downloaded as CSV files and then imported using PostgreSQL import tools.
 
-📸 Screenshot of Mockaroo configuration:  
-![Mockaroo Config](images/mockaroo_config.png) <!-- ### -->
+📸 Screenshot of Mockaroo configuration:
+![Mockaroo Config](Stage_1/mockarooFiles/Images/Warehouse_Field_Definition.png)
 
-📸 Screenshot of data upload/import:  
+![Mockaroo Config](Stage_1/mockarooFiles/Images/Mission_field_definition.png)
+
+![Mockaroo Config](Stage_1/mockarooFiles/Images/Personnel_field_definition.png)
+
+![Mockaroo Config](Stage_1/mockarooFiles/Images/Equipment_Type_Field_Definition.png)
+
+![Mockaroo Config](Stage_1/mockarooFiles/Images/Maintenance_Field_Definition.png)
+
+📸 Screenshot of data upload to database:
 ![Import Screenshot](images/mockaroo_import.png) <!-- ### -->
 
 ## Method 2: CSV File Insertion
