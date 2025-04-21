@@ -325,7 +325,7 @@ We asked ChatGPT to generate 5 realistic CSV files with 500 rows each for the fo
 The CSV files were manually reviewed and then inserted into the database using PostgreSQL's CSV import functionality.
 
 📽 Video of the CSV files used:
-<video src="https://github.com/eliel-monfort/DBProject_328269121_329114573/blob/main/Stage_1/DataImportFiles/Video/Inserting_Data_From_CSV_Files_Video.mp4"></video>
+<video src="https://github.com/eliel-monfort/DBProject_328269121_329114573/blob/main/Stage_1/DataImportFiles/Video/Inserting_Data_From_CSV_Files_Video.mp4" width="352" height="720"></video>
 
 The video gives an example of entering data into the `Armored Vehicle` table from a CSV file. This method allowed for efficient bulk data entry and is ideal for populating large tables where specific data structures need to be followed.
 
