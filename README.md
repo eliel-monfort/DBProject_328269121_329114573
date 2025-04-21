@@ -14,15 +14,17 @@
 
 ## 📚 Table of Contents
 
-1. [📘 Introduction](#-introduction)
-2. [🗂️ Entities and Attributes](#-entities-and-attributes)
-3. [🔗 Relationships](#-relationships)
-4. [🧠 Design Decisions](#-design-decisions)
-5. [📈 ERD & DSD Diagrams](#-erd--dsd-diagrams)
-6. [📥 Data Insertion Methods](#-data-insertion-methods)
-7. [💾 Backup](#-backup-and-restore)
+A. [🏁 Stage 1](#-Stage-1)
+  1. [📘 Introduction](#-introduction)
+  2. [🗂️ Entities and Attributes](#-entities-and-attributes)
+  3. [🔗 Relationships](#-relationships)
+  4. [🧠 Design Decisions](#-design-decisions)
+  5. [📈 ERD & DSD Diagrams](#-erd--dsd-diagrams)
+  6. [📥 Data Insertion Methods](#-data-insertion-methods)
+  7. [💾 Backup](#-backup-and-restore)
 
 ---
+# 🏁 Stage 1
 
 ## 📘 Introduction
 
@@ -323,7 +325,7 @@ We asked ChatGPT to generate 5 realistic CSV files with 500 rows each for the fo
 The CSV files were manually reviewed and then inserted into the database using PostgreSQL's CSV import functionality.
 
 📽 Video of the CSV files used:
-![CSV Files](Stage_1/DataImportFiles/Video/Inserting_Data_From_CSV_Files_Video.mp4)
+<video src="https://github.com/eliel-monfort/DBProject_328269121_329114573/blob/main/Stage_1/DataImportFiles/Video/Inserting_Data_From_CSV_Files_Video.mp4"></video>
 
 The video gives an example of entering data into the `Armored Vehicle` table from a CSV file. This method allowed for efficient bulk data entry and is ideal for populating large tables where specific data structures need to be followed.
 
