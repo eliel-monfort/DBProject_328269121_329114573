@@ -16,11 +16,11 @@
 
 1. [📘 Introduction](#-introduction)
 2. [🗂️ Entities and Attributes](#-entities-and-attributes)
-4. [🔗 Relationships](#-relationships)
+3. [🔗 Relationships](#-relationships)
+4. [🧠 Design Decisions](#-design-decisions)
 5. [📈 ERD & DSD Diagrams](#-erd--dsd-diagrams)
-6. [🧠 Design Decisions](#-design-decisions)
-7. [📥 Data Insertion Methods](#-data-insertion-methods)
-8. [💾 Backup and Restore](#-backup-and-restore)
+6. [📥 Data Insertion Methods](#-data-insertion-methods)
+7. [💾 Backup](#-backup-and-restore)
 
 ---
 
@@ -123,9 +123,6 @@ Represents a military mission.
 ### 1. Contains Equipment
 - **Linked Entities:** Equipment ⟷ Warehouse
 - **Type:** Many-to-One
-- **Attributes:**
-  - `quantity` : Number of items of this equipment stored in the warehouse.
-  - `stored since` : The date the equipment was first stored in the warehouse.
 - **Explanation:** Equipment is stored in a specific warehouse.
 
 ### 2. Categorizes
@@ -144,9 +141,6 @@ Represents a military mission.
 ### 4. Houses Vehicle
 - **Linked Entities:** Armored Vehicle ⟷ Warehouse
 - **Type:** Many-to-One
-- **Attributes:**
-  - `arrival date` : The date the vehicle was brought into the warehouse.
-  - `departure date` : The date the vehicle left the warehouse.
 - **Explanation:** Each vehicle is stored in one warehouse, and a warehouse can store many vehicles.
 
 ### 5. Undergoes
@@ -178,8 +172,6 @@ Represents a military mission.
 ### 9. Commander Unit Assignment
 - **Linked Entities:** Commander ⟷ Unit
 - **Type:** One-to-One
-- **Attributes:**
-  - `assigned date` : The date the commander was officially assigned to lead the unit.
 - **Explanation:** Each unit is led by one commander, and a commander leads only one unit.
 
 ### 10. Soldier Unit Assignment
@@ -205,6 +197,77 @@ Represents a military mission.
 
 ---
 
+## 🧠 Design Decisions
+
+During the design of the database, we made several design decisions aimed at ensuring **efficiency, flexibility, and accuracy** in data storage and query execution.
+
+### 🔷 1. Inheritance — `Personnel` Table Inheritance
+
+The system includes two types of people:
+
+- **Commander**
+- **Soldier**
+
+Both share common attributes such as:
+- First Name and Last Name
+- ID Number
+- Phone Number
+- Rank
+- Unit
+
+To avoid duplication, we created a single table named `Personnel` that contains all the shared attributes.  
+The `Commander` and `Soldier` tables inherit the `personnel_id` from the parent table and add specific fields, such as training type for soldiers.
+
+> 🧠 **Advantage:** This design allows for easy querying of all personnel and specific role tracking without redundant data.
+
+### 🔷 2. Weak Entity — `Vehicle_Part` Table as a Weak Entity
+
+The `Vehicle_Part` table represents the parts of armored vehicles:
+
+- Each part is **directly associated** with only one vehicle (no sharing between vehicles).
+- It **cannot exist independently** — it must be associated with an `Armored_Vehicle`.
+
+Therefore, we defined this table as a **weak entity** with a composite primary key:
+
+```sql
+PRIMARY KEY (vehicle_id, part_id)
+```
+
+> 🧠 **Advantage:** This design makes it easy to track which parts belong to which vehicle without losing the necessary relationship between them.
+
+### 🔷 3. Many-to-Many with Attributes — Complex Relationships with Additional Data
+
+Several many-to-many relationships in the system also store additional information beyond just the relationship:
+
+#### A. `Soldier_Mission_Assignment`
+
+- This table links soldiers to the missions they were assigned to.
+- It also includes additional information such as **assignment start date**, **role in the mission**, and **status**.
+
+#### B. `Problem_With`
+
+- This table links **vehicle parts** to the **maintenance tasks** that reported issues with them.
+- It includes details such as **repair cost**, **issue severity**, and **replacement date**.
+
+> 🧠 **Advantage:** These relationships not only store the connection but also the **historical context** — when, why, and how the connection happened.
+
+### 🔷 4. Normalization — Data Normalization
+
+We performed **full normalization** (up to higher Normal Forms):
+
+- Each entity is stored in a separate table with a clear primary key.
+- Relationships are maintained in join tables with foreign keys.
+- Data redundancy is eliminated.
+- It is easy to extend the system or modify the structure — **scalability**.
+
+For example:
+- The `Equipment_Use` table tracks when a soldier uses an equipment item, without repeating the equipment name.
+- The `Commander_Unit_Assignment` table stores the historical assignments of commanders to units.
+
+> 🧠 **Advantage:** The design is easy to maintain, performs quickly, and adheres to the principles of relational database design.
+
+---
+
 ## 📈 ERD & DSD Diagrams
 
 - **ERD Diagram**:
@@ -215,11 +278,11 @@ Represents a military mission.
 
 ---
 
-# 📦 Data Insertion Documentation
+# 📥 Data Insertion Methods
 
 ## Method 1: Mockaroo Data Generation
 
-I used [Mockaroo](https://mockaroo.com) to generate realistic mock data for the following tables:
+We used [Mockaroo](https://mockaroo.com) to generate realistic mock data for the following tables:
 
 - `Warehouse`
 - `Mission`
@@ -229,7 +292,7 @@ I used [Mockaroo](https://mockaroo.com) to generate realistic mock data for the 
 
 The generated data was downloaded as CSV files and then imported using PostgreSQL import tools.
 
-📸 Screenshot of Mockaroo configuration:
+### 📸 Screenshot of Mockaroo configuration:
 - **Warehouse Field Definition**
 ![Mockaroo Config](Stage_1/mockarooFiles/Images/Warehouse_Field_Definition.png)
 
@@ -245,12 +308,11 @@ The generated data was downloaded as CSV files and then imported using PostgreSQ
 - **Maintenance Field Definition**
 ![Mockaroo Config](Stage_1/mockarooFiles/Images/Maintenance_Field_Definition.png)
 
-📸 Screenshot of data upload to database:
-![Import Screenshot](images/mockaroo_import.png) <!-- ### -->
+Mockaroo is a good tool that allows the generation of large volumes of realistic data based on defined field structures. This method was particularly useful for creating the initial dataset quickly and accurately, especially for large tables such as `Warehouse` and `Mission`.
 
 ## Method 2: CSV File Insertion
 
-I asked ChatGPT to generate 5 realistic CSV files with 500 rows each for the following tables:
+We asked ChatGPT to generate 5 realistic CSV files with 500 rows each for the following tables:
 
 - `Armored Vehicle`
 - `Commander`
@@ -260,20 +322,30 @@ I asked ChatGPT to generate 5 realistic CSV files with 500 rows each for the fol
 
 The CSV files were manually reviewed and then inserted into the database using PostgreSQL's CSV import functionality.
 
-📸 Screenshot of the CSV files used:
-![CSV Files](images/csv_files_screenshot.png) <!-- ### -->
+📽 Video of the CSV files used:
+![CSV Files](Stage_1/DataImportFiles/Video/Inserting_Data_From_CSV_Files_Video.mp4)
 
-## Method 2: Python Script
+The video gives an example of entering data into the `Armored Vehicle` table from a CSV file. This method allowed for efficient bulk data entry and is ideal for populating large tables where specific data structures need to be followed.
+
+By using CSV files, we were able to save time and reduce errors compared to manual data entry. The use of video documentation also helps to demonstrate the process and ensure reproducibility.
+
+---
+
+## Method 3: Python Script
 
 For the second method, I wrote a Python script using `pandas` and `psycopg2` to programmatically insert data into the following tables:
 
-- `?????????`
+- `Equipment`
+- `Problem With`
+- `Soldier Equipment Use`
+- `Soldier Mission Assignment`
+- `Undergoes`
+- `Unit Mission Assignment`
+- `Vehicle Mission Assignment`
 
-📸 Screenshot of Python script execution:  
-![Python Script Execution](images/python_script.png) <!-- ### -->
+The script facilitated data entry by allowing us to automate the insertion of data into multiple tables, which is especially helpful for large datasets or for performing regular updates to the database.
 
-📸 Screenshot of data in pgAdmin:  
-![pgAdmin Result](images/pgadmin_result.png) <!-- ### -->
+The Python script works by reading data from predefined sources (such as CSV files or external data), processing it, and executing SQL commands to insert the data into the database.
 
 ## ✅ Summary
 
@@ -281,4 +353,17 @@ For the second method, I wrote a Python script using `pandas` and `psycopg2` to 
 |----------|----------------------------------|------------|
 | Mockaroo | Warehouse, Mission, Personnel, Equipment Type, Maintenance | ✅ Completed |
 | CSV      | Armored Vehicle, Commander, Soldier, Unit, Vehicle Part | ✅ Completed |
-| Python   | ????, ????, ????, ????, ???? | ✅ Completed |
+| Python   | Equipment, Problem With, Soldier Equipment Use, Soldier Mission Assignment, Undergoes, Unit Mission Assignment, Vehicle Mission Assignment | ✅ Completed |
+
+---
+
+## 💾 Backup
+
+### 📽 Video of the Backup:
+![Backup](Stage_1/Backup/Video/Backup_Video.mp4)
+
+The video demonstrates how we create and restore backups to ensure data is safe and easy to recover when needed.
+
+The backup process helps keep the data safe and ensures it stays intact. Regular backups are important to prevent losing data if something goes wrong with the system. In this project, we used PostgreSQL's built-in tools to create backups.
+
+The backup also allows my partner and me to work on the project at the same time. By using the backup file, we can work on different parts without worrying about messing up the data, making our teamwork smoother.
