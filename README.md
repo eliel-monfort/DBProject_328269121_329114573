@@ -294,19 +294,19 @@ The generated data was downloaded as CSV files and then imported using PostgreSQ
 
 ### 📸 Screenshot of Mockaroo configuration:
 - **Warehouse Field Definition**
-![Mockaroo Config](Stage_1/mockarooFiles/Images/Warehouse_Field_Definition.png)
+![Mockaroo Config](Stage_1/MockarooFiles/Images/Warehouse_Field_Definition.png)
 
 - **Mission Dield Definition**
-![Mockaroo Config](Stage_1/mockarooFiles/Images/Mission_field_definition.png)
+![Mockaroo Config](Stage_1/MockarooFiles/Images/Mission_Field_Definition.png)
 
 - **Personnel Field Definition**
-![Mockaroo Config](Stage_1/mockarooFiles/Images/Personnel_field_definition.png)
+![Mockaroo Config](Stage_1/MockarooFiles/Images/Personnel_Field_Definition.png)
 
 - **Equipment Type Field Definition**
-![Mockaroo Config](Stage_1/mockarooFiles/Images/Equipment_Type_Field_Definition.png)
+![Mockaroo Config](Stage_1/MockarooFiles/Images/Equipment_Type_Field_Definition.png)
 
 - **Maintenance Field Definition**
-![Mockaroo Config](Stage_1/mockarooFiles/Images/Maintenance_Field_Definition.png)
+![Mockaroo Config](Stage_1/MockarooFiles/Images/Maintenance_Field_Definition.png)
 
 Mockaroo is a good tool that allows the generation of large volumes of realistic data based on defined field structures. This method was particularly useful for creating the initial dataset quickly and accurately, especially for large tables such as `Warehouse` and `Mission`.
 
