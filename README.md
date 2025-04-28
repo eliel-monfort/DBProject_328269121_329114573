@@ -324,12 +324,10 @@ We asked ChatGPT to generate 5 realistic CSV files with 500 rows each for the fo
 
 The CSV files were manually reviewed and then inserted into the database using PostgreSQL's CSV import functionality.
 
-📽 Video of the CSV files used:
-![Inserting_Data_From_CSV_Files_Video](Stage_1/DataImportFiles/Video/Inserting_Data_From_CSV_Files_Video.mp4)
-<!--- the video need to be here --->
+### 📽 Video of the CSV files used:
+To watch the video click ![here](Stage_1/DataImportFiles/Video/Inserting_Data_From_CSV_Files_Video.mp4)
 
 The video gives an example of entering data into the `Armored Vehicle` table from a CSV file. This method allowed for efficient bulk data entry and is ideal for populating large tables where specific data structures need to be followed.
-
 By using CSV files, we were able to save time and reduce errors compared to manual data entry. The use of video documentation also helps to demonstrate the process and ensure reproducibility.
 
 ---
@@ -337,7 +335,6 @@ By using CSV files, we were able to save time and reduce errors compared to manu
 ## Method 3: Python Script
 
 For the second method, I wrote a Python script using `pandas` and `psycopg2` to programmatically insert data into the following tables:
-
 - `Equipment`
 - `Problem With`
 - `Soldier Equipment Use`
@@ -347,7 +344,6 @@ For the second method, I wrote a Python script using `pandas` and `psycopg2` to 
 - `Vehicle Mission Assignment`
 
 The script facilitated data entry by allowing us to automate the insertion of data into multiple tables, which is especially helpful for large datasets or for performing regular updates to the database.
-
 The Python script works by reading data from predefined sources (such as CSV files or external data), processing it, and executing SQL commands to insert the data into the database.
 
 ## ✅ Summary
@@ -361,14 +357,8 @@ The Python script works by reading data from predefined sources (such as CSV fil
 ---
 
 ## 💾 Backup
-
 ### 📽 Video of the Backup:
-
-![Backup](Stage_1/Backup/Video/Backup_Video.mp4)
-<!--- the video need to be here --->
-
+To watch the video click ![here](Stage_1/Backup/Video/Backup_Video.mp4)
 The video demonstrates how we create and restore backups to ensure data is safe and easy to recover when needed.
-
 The backup process helps keep the data safe and ensures it stays intact. Regular backups are important to prevent losing data if something goes wrong with the system. In this project, we used PostgreSQL's built-in tools to create backups.
-
 The backup also allows my partner and me to work on the project at the same time. By using the backup file, we can work on different parts without worrying about messing up the data, making our teamwork smoother.
