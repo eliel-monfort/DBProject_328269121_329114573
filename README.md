@@ -7,8 +7,8 @@
 # 🛡️ Armored Corps Logistics Database
 
 ## 👤 Authors:
-- Eliel Monfort - 328269121
-- Yehoshua Steinitz - 329114573
+- **Eliel Monfort - 328269121**
+- **Yehoshua Steinitz - 329114573**
 
 ---
 
