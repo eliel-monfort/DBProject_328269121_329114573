@@ -216,6 +216,7 @@ Then, we created two separate tables – `Commander` and `Soldier` – that use 
 
 > 🧠 **Why it's good:** It avoids repeating the same data and makes it easy to search for any person in the system.
 
+
 ### 🔷 2. Weak Entity – `Vehicle_Part` Table
 
 The `Vehicle_Part` table stores parts that belong to armored vehicles.
@@ -230,6 +231,7 @@ PRIMARY KEY (vehicle_id, part_id)
 ```
 
 > 🧠 **Why it's good:** It clearly shows which part belongs to which vehicle and keeps the link strong between them.
+
 
 ### 🔷 3. Many-to-Many with Extra Info
 
@@ -252,6 +254,7 @@ This one connects vehicle parts to maintenance jobs that found problems with the
 - Replacement date
 
 > 🧠 **Why it's good:** These tables keep a full history of what happened, not just who is linked to what.
+
 
 ### 🔷 4. Normalization
 
