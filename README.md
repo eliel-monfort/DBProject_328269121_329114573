@@ -16,7 +16,7 @@
 
 A. [🏁 Stage 1](#-Stage-1)
   1. [📘 Introduction](#-introduction)
-  2. [🗂️ Entities and Attributes](#-entities-and-attributes)
+  2. [🗂️ Entities and Attributes](#entities-and-attributes)
   3. [🔗 Relationships](#-relationships)
   4. [🧠 Design Decisions](#-design-decisions)
   5. [📈 ERD & DSD Diagrams](#-erd--dsd-diagrams)
