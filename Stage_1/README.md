@@ -272,10 +272,10 @@ For example:
 ## 📈 ERD & DSD Diagrams
 
 - **ERD Diagram**:
-![ERD](Stage_1/ERD.png)
+![ERD](ERD.png)
 
 - **DSD Diagram**:
-![DSD](Stage_1/DSD.png)
+![DSD](DSD.png)
 
 ---
 
@@ -295,19 +295,19 @@ The generated data was downloaded as CSV files and then imported using PostgreSQ
 
 ### 📸 Screenshot of Mockaroo configurations:
 - **Warehouse Field Definitions**
-![Mockaroo Config](Stage_1/MockarooFiles/Images/Warehouse_Field_Definition.png)
+![Mockaroo Config](MockarooFiles/Images/Warehouse_Field_Definition.png)
 
 - **Mission Dield Definitions**
-![Mockaroo Config](Stage_1/MockarooFiles/Images/Mission_Field_Definition.png)
+![Mockaroo Config](MockarooFiles/Images/Mission_Field_Definition.png)
 
 - **Personnel Field Definitions**
-![Mockaroo Config](Stage_1/MockarooFiles/Images/Personnel_Field_Definition.png)
+![Mockaroo Config](MockarooFiles/Images/Personnel_Field_Definition.png)
 
 - **Equipment Type Field Definitions**
-![Mockaroo Config](Stage_1/MockarooFiles/Images/Equipment_Type_Field_Definition.png)
+![Mockaroo Config](MockarooFiles/Images/Equipment_Type_Field_Definition.png)
 
 - **Maintenance Field Definitions**
-![Mockaroo Config](Stage_1/MockarooFiles/Images/Maintenance_Field_Definition.png)
+![Mockaroo Config](MockarooFiles/Images/Maintenance_Field_Definition.png)
 
 Mockaroo is a helpful tool that lets you quickly create large amounts of fake but realistic data, based on the structure you define for each field.  
 We used it to build our initial dataset fast and with good accuracy, especially for big tables like `Warehouse` and `Mission`.
