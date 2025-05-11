@@ -4,18 +4,18 @@
 ![Status](https://img.shields.io/badge/Status-Stable-brightgreen?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 
-# 🛡️ Armored Warehouse Management System
+# 🛡️ Armored Corps Logistics Database
 
 ## 👤 Authors:
-- Eliel Monfort - 328269121
-- Yehoshua Steinitz - 329114573
+- **Eliel Monfort - 328269121**
+- **Yehoshua Steinitz - 329114573**
 
 ---
 
 ## 📚 Table of Contents
 
 1. [📘 Introduction](#-introduction)
-2. [🗂️ Entities and Attributes](#-entities-and-attributes)
+2. [🗂️ Entities and Attributes](#entities-and-attributes)
 3. [🔗 Relationships](#-relationships)
 4. [🧠 Design Decisions](#-design-decisions)
 5. [📈 ERD & DSD Diagrams](#-erd--dsd-diagrams)
@@ -23,21 +23,22 @@
 7. [💾 Backup](#-backup-and-restore)
 
 ---
+
 ## 📘 Introduction
 
-This project is a **Database Management System** for the **Logistics Unit of the Armored Corps**.
+This project is a database for the **logistics unit of the Armored Corps**.
 
-The system is designed to manage all aspects related to **military equipment**, **armored vehicles**, **soldiers**, **commanders**, **missions**, and **vehicle maintenance**.
+The system helps manage everything related to military gear, armored vehicles, soldiers, commanders, missions, and vehicle maintenance.
 
-It stores important data and enables efficient tracking of:
+It keeps important information and makes it easy to track things like:
 
-- Equipment stored in warehouses  
-- Which soldier or unit is using specific equipment  
-- Armored vehicles and their maintenance history  
-- Soldiers, commanders, and their assigned units  
-- Missions and which units and soldiers are involved  
+- What equipment is stored in each warehouse  
+- Which soldier or unit is using which equipment  
+- Armored vehicles and their maintenance records  
+- Soldiers and commanders, and which units they belong to  
+- Missions and which soldiers and units are taking part  
 
-The goal is to build a smart and organized database that supports real military operations and provides accurate, real-time information for decision-making.
+The goal is to create a clear and well-organized database that helps support real military tasks and gives accurate, up-to-date information for making decisions.
 
 ---
 
@@ -198,72 +199,73 @@ Represents a military mission.
 
 ## 🧠 Design Decisions
 
-During the design of the database, we made several design decisions aimed at ensuring **efficiency, flexibility, and accuracy** in data storage and query execution.
+While designing the database, we made a few key choices to keep it efficient, flexible, and accurate.
 
-### 🔷 1. Inheritance — `Personnel` Table Inheritance
+### 🔷 1. Inheritance – `Personnel` Table
 
-The system includes two types of people:
+We have two kinds of people in the system:
 
-- **Commander**
-- **Soldier**
+- **Commanders**
+- **Soldiers**
 
-Both share common attributes such as:
-- First Name and Last Name
-- ID Number
-- Phone Number
-- Rank
-- Unit
+Since they share some basic details like name, ID, phone number, rank, and unit, we made one main table called `Personnel` to store this shared info.
 
-To avoid duplication, we created a single table named `Personnel` that contains all the shared attributes.  
-The `Commander` and `Soldier` tables inherit the `personnel_id` from the parent table and add specific fields, such as training type for soldiers.
+Then, we created two separate tables – `Commander` and `Soldier` – that use the `personnel_id` from the main table and add fields specific to each role (like training type for soldiers).
 
-> 🧠 **Advantage:** This design allows for easy querying of all personnel and specific role tracking without redundant data.
+> 🧠 **Why it's good:** It avoids repeating the same data and makes it easy to search for any person in the system.
 
-### 🔷 2. Weak Entity — `Vehicle_Part` Table as a Weak Entity
+### 🔷 2. Weak Entity – `Vehicle_Part` Table
 
-The `Vehicle_Part` table represents the parts of armored vehicles:
+The `Vehicle_Part` table stores parts that belong to armored vehicles.
 
-- Each part is **directly associated** with only one vehicle (no sharing between vehicles).
-- It **cannot exist independently** — it must be associated with an `Armored_Vehicle`.
+- There are identical parts that are belong to different vehicles.
+- Each part is linked to just one vehicle.
+- A part can't exist on its own – it must be connected to a vehicle.
 
-Therefore, we defined this table as a **weak entity** with a composite primary key:
-
+So we made it a weak entity and gave it a combined primary key:
 ```sql
 PRIMARY KEY (vehicle_id, part_id)
 ```
 
-> 🧠 **Advantage:** This design makes it easy to track which parts belong to which vehicle without losing the necessary relationship between them.
+> 🧠 **Why it's good:** It clearly shows which part belongs to which vehicle and keeps the link strong between them.
 
-### 🔷 3. Many-to-Many with Attributes — Complex Relationships with Additional Data
+### 🔷 3. Many-to-Many with Extra Info
 
-Several many-to-many relationships in the system also store additional information beyond just the relationship:
+Some many-to-many relationships in our system need more than just a link – they need extra details.
 
 #### A. `Soldier_Mission_Assignment`
 
-- This table links soldiers to the missions they were assigned to.
-- It also includes additional information such as **assignment start date**, **role in the mission**, and **status**.
+This table connects soldiers to their missions, and includes extra info like:
+
+- When they joined
+- What their role was
+- Their status during the mission
 
 #### B. `Problem_With`
 
-- This table links **vehicle parts** to the **maintenance tasks** that reported issues with them.
-- It includes details such as **repair cost**, **issue severity**, and **replacement date**.
+This one connects vehicle parts to maintenance jobs that found problems with them, and includes:
 
-> 🧠 **Advantage:** These relationships not only store the connection but also the **historical context** — when, why, and how the connection happened.
+- Repair cost
+- Issue details
+- Replacement date
 
-### 🔷 4. Normalization — Data Normalization
+> 🧠 **Why it's good:** These tables keep a full history of what happened, not just who is linked to what.
 
-We performed **full normalization** (up to higher Normal Forms):
+### 🔷 4. Normalization
 
-- Each entity is stored in a separate table with a clear primary key.
-- Relationships are maintained in join tables with foreign keys.
-- Data redundancy is eliminated.
-- It is easy to extend the system or modify the structure — **scalability**.
+We fully normalized the database to higher normal forms:
+
+- Each type of data is in its own table with a clear primary key.
+- Connections between tables use foreign keys.
+- There’s no repeated data.
+- It’s easy to scale or change the structure later.
 
 For example:
-- The `Equipment_Use` table tracks when a soldier uses an equipment item, without repeating the equipment name.
-- The `Commander_Unit_Assignment` table stores the historical assignments of commanders to units.
 
-> 🧠 **Advantage:** The design is easy to maintain, performs quickly, and adheres to the principles of relational database design.
+- `Equipment_Use` stores when a soldier uses a piece of equipment, without repeating the name.
+- `Commander_Unit_Assignment` tracks which commander was assigned to which unit, and when.
+
+> 🧠 **Why it's good:** The system is clean, fast, and easy to update in the future.
 
 ---
 
@@ -291,23 +293,24 @@ We used [Mockaroo](https://mockaroo.com) to generate realistic mock data for the
 
 The generated data was downloaded as CSV files and then imported using PostgreSQL import tools.
 
-### 📸 Screenshot of Mockaroo configuration:
-- **Warehouse Field Definition**
+### 📸 Screenshot of Mockaroo configurations:
+- **Warehouse Field Definitions**
 ![Mockaroo Config](Stage_1/MockarooFiles/Images/Warehouse_Field_Definition.png)
 
-- **Mission Dield Definition**
+- **Mission Dield Definitions**
 ![Mockaroo Config](Stage_1/MockarooFiles/Images/Mission_Field_Definition.png)
 
-- **Personnel Field Definition**
+- **Personnel Field Definitions**
 ![Mockaroo Config](Stage_1/MockarooFiles/Images/Personnel_Field_Definition.png)
 
-- **Equipment Type Field Definition**
+- **Equipment Type Field Definitions**
 ![Mockaroo Config](Stage_1/MockarooFiles/Images/Equipment_Type_Field_Definition.png)
 
-- **Maintenance Field Definition**
+- **Maintenance Field Definitions**
 ![Mockaroo Config](Stage_1/MockarooFiles/Images/Maintenance_Field_Definition.png)
 
-Mockaroo is a good tool that allows the generation of large volumes of realistic data based on defined field structures. This method was particularly useful for creating the initial dataset quickly and accurately, especially for large tables such as `Warehouse` and `Mission`.
+Mockaroo is a helpful tool that lets you quickly create large amounts of fake but realistic data, based on the structure you define for each field.  
+We used it to build our initial dataset fast and with good accuracy, especially for big tables like `Warehouse` and `Mission`.
 
 ## Method 2: CSV File Insertion
 
@@ -321,17 +324,20 @@ We asked ChatGPT to generate 5 realistic CSV files with 500 rows each for the fo
 
 The CSV files were manually reviewed and then inserted into the database using PostgreSQL's CSV import functionality.
 
-### 📽 Video of the CSV files used:
-To watch the video click [here](https://github.com/eliel-monfort/DBProject_328269121_329114573/raw/refs/heads/main/Stage_1/DataImportFiles/Video/Inserting_Data_From_CSV_Files_Video.mp4).
+### 📽 Video of CSV data files import demo:
+To download and watch the video click [here](https://github.com/eliel-monfort/DBProject_328269121_329114573/raw/refs/heads/main/Stage_1/DataImportFiles/Video/Inserting_Data_From_CSV_Files_Video.mp4).
 
-The video gives an example of entering data into the `Armored Vehicle` table from a CSV file. This method allowed for efficient bulk data entry and is ideal for populating large tables where specific data structures need to be followed.
-By using CSV files, we were able to save time and reduce errors compared to manual data entry. The use of video documentation also helps to demonstrate the process and ensure reproducibility.
+The video shows how we added data to the `Armored Vehicle` table using a CSV file. 
+This method made it easy to insert a lot of data at once and worked well for large tables that follow a specific format.
+
+Using CSV files helped us save time and avoid mistakes compared to typing the data manually.
+The video also helps explain the process clearly and makes it easier to repeat if needed.
 
 ---
 
 ## Method 3: Python Script
 
-For the second method, I wrote a Python script using `pandas` and `psycopg2` to programmatically insert data into the following tables:
+For the third method, we used a Python script with `pandas` and `psycopg2` to insert data into the following tables automatically:
 - `Equipment`
 - `Problem With`
 - `Soldier Equipment Use`
@@ -340,8 +346,9 @@ For the second method, I wrote a Python script using `pandas` and `psycopg2` to 
 - `Unit Mission Assignment`
 - `Vehicle Mission Assignment`
 
-The script facilitated data entry by allowing us to automate the insertion of data into multiple tables, which is especially helpful for large datasets or for performing regular updates to the database.
-The Python script works by reading data from predefined sources (such as CSV files or external data), processing it, and executing SQL commands to insert the data into the database.
+The script made data entry easier by letting us insert data into multiple tables automatically.  
+This was especially useful for large datasets or when we needed to update the database regularly.  
+It reads data from sources like CSV files, processes it, and runs SQL commands to add the data to the database.
 
 ## ✅ Summary
 
@@ -354,9 +361,12 @@ The Python script works by reading data from predefined sources (such as CSV fil
 ---
 
 ## 💾 Backup
-### 📽 Video of the Backup:
-To watch the video click [here](https://github.com/eliel-monfort/DBProject_328269121_329114573/raw/refs/heads/main/Stage_1/Backup/Video/Backup_Video.mp4).
+### 📽 Video of Backup implementation demo:
+To download and watch the video click [here](https://github.com/eliel-monfort/DBProject_328269121_329114573/raw/refs/heads/main/Stage_1/Backup/Video/Backup_Video.mp4).
 
-The video demonstrates how we create and restore backups to ensure data is safe and easy to recover when needed.
-The backup process helps keep the data safe and ensures it stays intact. Regular backups are important to prevent losing data if something goes wrong with the system. In this project, we used PostgreSQL's built-in tools to create backups.
-The backup also allows my partner and me to work on the project at the same time. By using the backup file, we can work on different parts without worrying about messing up the data, making our teamwork smoother.
+The video shows how we created and restored backups to keep our data safe and easy to recover.  
+We used PostgreSQL’s built-in tools for this. Regular backups are important in case something goes wrong.  
+They help make sure the data stays safe and doesn't get lost.
+
+Backups also helped us work on the project as a team.  
+By using the backup file, we could work on different parts without messing up each other's work.
