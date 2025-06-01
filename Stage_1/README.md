@@ -1,17 +1,3 @@
-# DBProject_328269121_329114573 
-
-![SQL](https://img.shields.io/badge/SQL-RelationalDB-blue?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Stable-brightgreen?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
-
-# 🛡️ Armored Corps Logistics Database
-
-## 👤 Authors:
-- **Eliel Monfort - 328269121**
-- **Yehoshua Steinitz - 329114573**
-
----
-
 ## 📚 Table of Contents
 
 1. [📘 Introduction](#-introduction)
