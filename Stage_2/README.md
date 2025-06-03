@@ -66,7 +66,7 @@ ORDER BY days_since_maintenance DESC;
 
 📸 **Running Query Screenshot:**
 
-![SelectQuery1](Stage_2/Queries/Select_Queries/Images/SelectQuery1.png)
+![SelectQuery1](Queries/Select_Queries/Images/SelectQuery1.png)
 
 ---
 
@@ -109,7 +109,7 @@ ORDER BY days_after_expiration DESC;
 
 📸 **Running Query Screenshot:**
 
-![SelectQuery2](Stage_2/Queries/Select_Queries/Images/SelectQuery2.png)
+![SelectQuery2](Queries/Select_Queries/Images/SelectQuery2.png)
 
 ---
 
@@ -156,7 +156,7 @@ ORDER BY M.mission_ID, SEU.use_start DESC;
 
 📸 **Running Query Screenshot:**
 
-![SelectQuery3](Stage_2/Queries/Select_Queries/Images/SelectQuery3.png)
+![SelectQuery3](Queries/Select_Queries/Images/SelectQuery3.png)
 
 ---
 
@@ -205,7 +205,7 @@ ORDER BY days_late DESC;
 
 📸 **Running Query Screenshot:**
 
-![SelectQuery4](Stage_2/Queries/Select_Queries/Images/SelectQuery4.png)
+![SelectQuery4](Queries/Select_Queries/Images/SelectQuery4.png)
 
 ---
 
@@ -249,7 +249,7 @@ ORDER BY total_repair_cost DESC;
 
 📸 **Running Query Screenshot:**
 
-![SelectQuery5](Stage_2/Queries/Select_Queries/Images/SelectQuery5.png)
+![SelectQuery5](Queries/Select_Queries/Images/SelectQuery5.png)
 
 ---
 
@@ -291,7 +291,7 @@ ORDER BY days_of_service DESC;
 
 📸 **Running Query Screenshot:**
 
-![SelectQuery6](Stage_2/Queries/Select_Queries/Images/SelectQuery6.png)
+![SelectQuery6](Queries/Select_Queries/Images/SelectQuery6.png)
 
 ---
 
@@ -338,7 +338,7 @@ ORDER BY M.mission_ID, SMA.join_date;
 
 📸 **Running Query Screenshot:**
 
-![SelectQuery7](Stage_2/Queries/Select_Queries/Images/SelectQuery7.png)
+![SelectQuery7](Queries/Select_Queries/Images/SelectQuery7.png)
 
 ---
 
@@ -389,7 +389,7 @@ ORDER BY days_since_maintenance ASC;
 
 📸 **Running Query Screenshot:**
 
-![SelectQuery8](Stage_2/Queries/Select_Queries/Images/SelectQuery8.png)
+![SelectQuery8](Queries/Select_Queries/Images/SelectQuery8.png)
 
 ---
 
@@ -443,11 +443,11 @@ Run the command `SELECT * FROM Problem_With` before and after the deletion.
 
 📸 **Before Deletion:**
 
-![DeleteQuery1_Before](Stage_2/Queries/Delete_Queries/Images/DeleteQuery1_Before.png)
+![DeleteQuery1_Before](Queries/Delete_Queries/Images/DeleteQuery1_Before.png)
 
 📸 **After Deletion:**
 
-![DeleteQuery1_After](Stage_2/Queries/Delete_Queries/Images/DeleteQuery1_After.png)
+![DeleteQuery1_After](Queries/Delete_Queries/Images/DeleteQuery1_After.png)
 
 ---
 
@@ -485,11 +485,11 @@ Run the command `SELECT * FROM Soldier_Equipment_Use` before and after the delet
 
 📸 **Before Deletion:**
 
-![DeleteQuery2_Before](Stage_2/Queries/Delete_Queries/Images/DeleteQuery2_Before.png)
+![DeleteQuery2_Before](Queries/Delete_Queries/Images/DeleteQuery2_Before.png)
 
 📸 **After Deletion:**
 
-![DeleteQuery2_After](Stage_2/Queries/Delete_Queries/Images/DeleteQuery2_After.png)
+![DeleteQuery2_After](Queries/Delete_Queries/Images/DeleteQuery2_After.png)
 
 ---
 
@@ -529,11 +529,11 @@ Run the command `SELECT * FROM Commander` before and after the deletion.
 
 📸 **Before Deletion:**
 
-![DeleteQuery3_Before](Stage_2/Queries/Delete_Queries/Images/DeleteQuery3_Before.png)
+![DeleteQuery3_Before](Queries/Delete_Queries/Images/DeleteQuery3_Before.png)
 
 📸 **After Deletion:**
 
-![DeleteQuery3_After](Stage_2/Queries/Delete_Queries/Images/DeleteQuery3_After.png)
+![DeleteQuery3_After](Queries/Delete_Queries/Images/DeleteQuery3_After.png)
 
 ---
 
@@ -604,11 +604,11 @@ Run the command `SELECT * FROM Soldier` before and after the update.
 
 📸 **Before Update:**
 
-![UpdateQuery1_Before](Stage_2/Queries/Update_Queries/Images/UpdateQuery1_Before.png)
+![UpdateQuery1_Before](Queries/Update_Queries/Images/UpdateQuery1_Before.png)
 
 📸 **After Update:**
 
-![UpdateQuery1_After](Stage_2/Queries/Update_Queries/Images/UpdateQuery1_After.png)
+![UpdateQuery1_After](Queries/Update_Queries/Images/UpdateQuery1_After.png)
 
 ---
 
@@ -688,11 +688,11 @@ ORDER BY W.warehouse_ID;
 
 📸 **Before Update:**
 
-![UpdateQuery2_Before](Stage_2/Queries/Update_Queries/Images/UpdateQuery2_Before.png)
+![UpdateQuery2_Before](Queries/Update_Queries/Images/UpdateQuery2_Before.png)
 
 📸 **After Update:**
 
-![UpdateQuery2_After](Stage_2/Queries/Update_Queries/Images/UpdateQuery2_After.png)
+![UpdateQuery2_After](Queries/Update_Queries/Images/UpdateQuery2_After.png)
 
 ---
 
@@ -727,11 +727,11 @@ Run the command `SELECT * FROM Equipment` before and after the update.
 
 📸 **Before Update:**
 
-![UpdateQuery3_Before](Stage_2/Queries/Update_Queries/Images/UpdateQuery3_Before.png)
+![UpdateQuery3_Before](Queries/Update_Queries/Images/UpdateQuery3_Before.png)
 
 📸 **After Update:**
 
-![UpdateQuery3_After](Stage_2/Queries/Update_Queries/Images/UpdateQuery3_After.png)
+![UpdateQuery3_After](Queries/Update_Queries/Images/UpdateQuery3_After.png)
 
 ---
 
@@ -766,7 +766,7 @@ INSERT INTO Warehouse (warehouse_ID, location, capacity, opened_date, last_inspe
 VALUES (101, 'DummyBase', 5, '2022-01-01', '2024-01-01');
 ```
 
-![Constraint1](Stage_2/Constraints/Images/Constraint1.png)
+![Constraint1](Constraints/Images/Constraint1.png)
 
 ---
 
@@ -792,7 +792,7 @@ INSERT INTO Soldier (personnel_ID, rank, unit_ID)
 VALUES (3000, 'Private', 1);
 ```
 
-![Constraint2](Stage_2/Constraints/Images/Constraint2.png)
+![Constraint2](Constraints/Images/Constraint2.png)
 
 ---
 
@@ -816,9 +816,9 @@ INSERT INTO Equipment (equipment_ID, name, purchase_date, warehouse_ID, type_ID)
 VALUES (502, 'Thermal Camera', '2024-06-01', 1, 3);
 ```
 
-![Constraint3_1](Stage_2/Constraints/Images/Constraint3_1.png)
+![Constraint3_1](Constraints/Images/Constraint3_1.png)
 
-![Constraint3_2](Stage_2/Constraints/Images/Constraint3_2.png)
+![Constraint3_2](Constraints/Images/Constraint3_2.png)
 
 As we can see, we inserted a equipment without a warranty expiration date, so the constraint automatically sets it to two years from today.
 
@@ -876,7 +876,7 @@ If this is your first time running the update script, these queries should retur
 Of course, these are not all the changes we made - just a few examples. But they clearly show how the COMMIT command works and why it's important.
 
 2. **Run the Update Script**  
-Now, run the file [`DataToCommit.sql`](Stage_2/RollbackCommit/DataToCommit.sql).  
+Now, run the file [`DataToCommit.sql`](RollbackCommit/DataToCommit.sql).  
 This script creates a new unit, adds personnel and mission data, assigns equipment, and more.
 
 3. **Verify the Changes (Before COMMIT)**  
@@ -936,7 +936,7 @@ You should see no results if the database is in its original state.
 Of course, these are not all the changes we made - just a few examples. But they clearly show how the ROLLBACK command works and why it's important.
 
 2. **Run the Rollback Script**  
-Now run the file [`DataToRollback.sql`](Stage_2/RollbackCommit/DataToRollback.sql).  
+Now run the file [`DataToRollback.sql`](RollbackCommit/DataToRollback.sql).  
 This file simulates the creation of a temporary recon unit, soldiers, equipment, vehicles, and a mission.
 
 3. **Verify the Changes (Before ROLLBACK)**  
