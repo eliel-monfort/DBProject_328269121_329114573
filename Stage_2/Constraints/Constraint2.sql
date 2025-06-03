@@ -1,0 +1,2 @@
+ALTER TABLE Soldier
+ALTER COLUMN enlistment_date SET NOT NULL;
