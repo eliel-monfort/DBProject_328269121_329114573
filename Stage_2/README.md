@@ -876,7 +876,7 @@ If this is your first time running the update script, these queries should retur
 Of course, these are not all the changes we made - just a few examples. But they clearly show how the COMMIT command works and why it's important.
 
 2. **Run the Update Script**  
-Now, run the file [`DataToCommit.sql`](RollbackCommit/DataToCommit.sql).  
+Now, run the file [`DataToCommit.sql`](Rollback_Commit/DataToCommit.sql).  
 This script creates a new unit, adds personnel and mission data, assigns equipment, and more.
 
 3. **Verify the Changes (Before COMMIT)**  
@@ -936,7 +936,7 @@ You should see no results if the database is in its original state.
 Of course, these are not all the changes we made - just a few examples. But they clearly show how the ROLLBACK command works and why it's important.
 
 2. **Run the Rollback Script**  
-Now run the file [`DataToRollback.sql`](RollbackCommit/DataToRollback.sql).  
+Now run the file [`DataToRollback.sql`](Rollback_Commit/DataToRollback.sql).  
 This file simulates the creation of a temporary recon unit, soldiers, equipment, vehicles, and a mission.
 
 3. **Verify the Changes (Before ROLLBACK)**  
