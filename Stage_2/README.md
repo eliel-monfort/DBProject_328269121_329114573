@@ -7,8 +7,8 @@
 5. [🧾 Constraints (ALTER TABLE)](#-constraints-alter-table)
 6. [🔄 Rollback & Commit](#-rollback--commit)
 7. [💾 Updated Backup](#-updated-backup)
-8. [📦 Summary of Files](#-summary-of-files)
-9. [✅ GitHub Submission Notes](#-github-submission-notes)
+
+---
 
 ## 📘 Stage B Overview
 
@@ -64,7 +64,8 @@ GROUP BY
 ORDER BY days_since_maintenance DESC;
 ```
 
-📸 **Running Query Screenshot:**  
+📸 **Running Query Screenshot:**
+
 ![SelectQuery1](Stage_2/Queries/Select_Queries/Images/SelectQuery1.png)
 
 ---
@@ -106,7 +107,8 @@ GROUP BY
 ORDER BY days_after_expiration DESC;
 ```
 
-📸 **Running Query Screenshot:**  
+📸 **Running Query Screenshot:**
+
 ![SelectQuery2](Stage_2/Queries/Select_Queries/Images/SelectQuery2.png)
 
 ---
@@ -153,6 +155,7 @@ ORDER BY M.mission_ID, SEU.use_start DESC;
 ```
 
 📸 **Running Query Screenshot:**
+
 ![SelectQuery3](Stage_2/Queries/Select_Queries/Images/SelectQuery3.png)
 
 ---
@@ -200,7 +203,8 @@ GROUP BY
 ORDER BY days_late DESC;
 ```
 
-📸 **Running Query Screenshot:**  
+📸 **Running Query Screenshot:**
+
 ![SelectQuery4](Stage_2/Queries/Select_Queries/Images/SelectQuery4.png)
 
 ---
@@ -243,7 +247,8 @@ HAVING COUNT(*) >= 2
 ORDER BY total_repair_cost DESC;
 ```
 
-📸 **Running Query Screenshot:**  
+📸 **Running Query Screenshot:**
+
 ![SelectQuery5](Stage_2/Queries/Select_Queries/Images/SelectQuery5.png)
 
 ---
@@ -284,7 +289,8 @@ WHERE S.personnel_ID = P.personnel_ID
 ORDER BY days_of_service DESC;
 ```
 
-📸 **Running Query Screenshot:**  
+📸 **Running Query Screenshot:**
+
 ![SelectQuery6](Stage_2/Queries/Select_Queries/Images/SelectQuery6.png)
 
 ---
@@ -330,7 +336,8 @@ WHERE S.personnel_ID = P.personnel_ID
 ORDER BY M.mission_ID, SMA.join_date;
 ```
 
-📸 **Running Query Screenshot:**  
+📸 **Running Query Screenshot:**
+
 ![SelectQuery7](Stage_2/Queries/Select_Queries/Images/SelectQuery7.png)
 
 ---
@@ -380,7 +387,8 @@ WHERE V.warehouse_ID = W1.warehouse_ID
 ORDER BY days_since_maintenance ASC;
 ```
 
-📸 **Running Query Screenshot:**  
+📸 **Running Query Screenshot:**
+
 ![SelectQuery8](Stage_2/Queries/Select_Queries/Images/SelectQuery8.png)
 
 ---
@@ -433,10 +441,12 @@ WHERE replaced_on < CURRENT_DATE - INTERVAL '2 years'
 **To view the changes:**  
 Run the command `SELECT * FROM Problem_With` before and after the deletion.
 
-📸 **Before Deletion:**  
+📸 **Before Deletion:**
+
 ![DeleteQuery1_Before](Stage_2/Queries/Delete_Queries/Images/DeleteQuery1_Before.png)
 
-📸 **After Deletion:**  
+📸 **After Deletion:**
+
 ![DeleteQuery1_After](Stage_2/Queries/Delete_Queries/Images/DeleteQuery1_After.png)
 
 ---
@@ -473,10 +483,12 @@ WHERE equipment_ID IN (
 **To view the changes:**  
 Run the command `SELECT * FROM Soldier_Equipment_Use` before and after the deletion.
 
-📸 **Before Deletion:**  
+📸 **Before Deletion:**
+
 ![DeleteQuery2_Before](Stage_2/Queries/Delete_Queries/Images/DeleteQuery2_Before.png)
 
-📸 **After Deletion:**  
+📸 **After Deletion:**
+
 ![DeleteQuery2_After](Stage_2/Queries/Delete_Queries/Images/DeleteQuery2_After.png)
 
 ---
@@ -515,10 +527,12 @@ WHERE personnel_ID IN (
 **To view the changes:**  
 Run the command `SELECT * FROM Commander` before and after the deletion.
 
-📸 **Before Deletion:**  
+📸 **Before Deletion:**
+
 ![DeleteQuery3_Before](Stage_2/Queries/Delete_Queries/Images/DeleteQuery3_Before.png)
 
-📸 **After Deletion:**  
+📸 **After Deletion:**
+
 ![DeleteQuery3_After](Stage_2/Queries/Delete_Queries/Images/DeleteQuery3_After.png)
 
 ---
@@ -588,10 +602,12 @@ END;
 **To view the changes:**  
 Run the command `SELECT * FROM Soldier` before and after the update.
 
-📸 **Before Update:**  
+📸 **Before Update:**
+
 ![UpdateQuery1_Before](Stage_2/Queries/Update_Queries/Images/UpdateQuery1_Before.png)
 
-📸 **After Update:**  
+📸 **After Update:**
+
 ![UpdateQuery1_After](Stage_2/Queries/Update_Queries/Images/UpdateQuery1_After.png)
 
 ---
@@ -670,10 +686,12 @@ HAVING WS.pre_count <= W.capacity
 ORDER BY W.warehouse_ID;
 ```
 
-📸 **Before Update:**  
+📸 **Before Update:**
+
 ![UpdateQuery2_Before](Stage_2/Queries/Update_Queries/Images/UpdateQuery2_Before.png)
 
-📸 **After Update:**  
+📸 **After Update:**
+
 ![UpdateQuery2_After](Stage_2/Queries/Update_Queries/Images/UpdateQuery2_After.png)
 
 ---
@@ -707,10 +725,12 @@ WHERE equipment_ID IN (
 **To view the changes:**  
 Run the command `SELECT * FROM Equipment` before and after the update.
 
-📸 **Before Update:**  
+📸 **Before Update:**
+
 ![UpdateQuery3_Before](Stage_2/Queries/Update_Queries/Images/UpdateQuery3_Before.png)
 
-📸 **After Update:**  
+📸 **After Update:**
+
 ![UpdateQuery3_After](Stage_2/Queries/Update_Queries/Images/UpdateQuery3_After.png)
 
 ---
