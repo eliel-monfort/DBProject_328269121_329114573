@@ -1,7 +1,7 @@
 ## 📚 Table of Contents
 
 1. [📘 Stage B Overview](#-stage-b-overview)
-2. [📊 Complex SELECT Queries](#-complex-select-queries)
+2. [📊 SELECT Queries](#-select-queries)
 3. [🧹 DELETE Queries](#-delete-queries)
 4. [🔁 UPDATE Queries](#-update-queries)
 5. [🧾 Constraints (ALTER TABLE)](#-constraints-alter-table)
