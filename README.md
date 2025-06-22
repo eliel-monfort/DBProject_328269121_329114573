@@ -32,7 +32,7 @@ B. [🏁 Stage 2](#-Stage-2)
   6. [🔄 Rollback & Commit](#-rollback--commit)
   7. [💾 Updated Backup](#-updated-backup)
 
-C.
+C. [🏁 Stage 3](#-Stage-3)
   1. [📘 Introduction](#-introduction)
   2. [🔁 Reverse Engineering](#-reverse-engineering)
   3. [🔗 Integration](#-integration)
