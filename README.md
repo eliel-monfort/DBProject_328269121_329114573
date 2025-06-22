@@ -33,7 +33,7 @@ B. [🏁 Stage 2](#-Stage-2)
   7. [💾 Updated Backup](#-updated-backup)
 
 C.
-  1 . [📘 Introduction](#-introduction)
+  1. [📘 Introduction](#-introduction)
   2. [🔁 Reverse Engineering](#-reverse-engineering)
   3. [🔗 Integration](#-integration)
   4. [🧩 Final Diagrams](#-final-diagrams)
