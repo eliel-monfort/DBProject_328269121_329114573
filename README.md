@@ -1343,4 +1343,4 @@ This confirms the ROLLBACK successfully reverted all changes.
 
 ## 💾 Updated Backup
 
-During this stage, we performed multiple updates and inserts into the database. To preserve the current state and ensure data consistency, we now create a full second backup.
+During this stage, we performed multiple updates and inserts into the database. To preserve the current state and ensure data consistency, we now create a full **second** backup.
