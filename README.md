@@ -21,7 +21,7 @@ A. [🏁 Stage 1](#-Stage-1)
   4. [🧠 Design Decisions](#-design-decisions)
   5. [📈 ERD & DSD Diagrams](#-erd--dsd-diagrams)
   6. [📥 Data Insertion Methods](#-data-insertion-methods)
-  7. [💾 Backup](#-backup-and-restore)
+  7. [💾 Backup 1](#-backup-1)
 
 B. [🏁 Stage 2](#-Stage-2)
   1. [📘 Introduction B](#-introduction-b)
@@ -30,7 +30,7 @@ B. [🏁 Stage 2](#-Stage-2)
   4. [🔁 UPDATE Queries](#-update-queries)
   5. [🧾 Constraints (ALTER TABLE)](#-constraints-alter-table)
   6. [🔄 Rollback & Commit](#-rollback--commit)
-  7. [💾 Updated Backup](#-updated-backup)
+  7. [💾 Backup 2](#-backup-2)
 
 C. [🏁 Stage 3](#-Stage-3)
   1. [📘 Introduction C](#-introduction-c)
@@ -38,7 +38,7 @@ C. [🏁 Stage 3](#-Stage-3)
   3. [🔗 Integration](#-integration)
   4. [🧩 Final Diagrams](#-final-diagrams)
   5. [🔎 Views and Queries](#-views-and-queries)
-  6. [💾 Updated Backup](#-updated-backup)
+  6. [💾 Backup 3](#-backup-3)
 
 D. [🏁 Stage 4](#-Stage-4)
   1. [📘 Introduction D](#-introduction-d)
@@ -50,7 +50,7 @@ D. [🏁 Stage 4](#-Stage-4)
   7. [🔒 Trigger: trg_prevent_assign_not_ready_vehicle](#-trigger-trg_prevent_assign_not_ready_vehicle)
   8. [🔢 Main Program 1: Warehouse Management System](#-main-program-1-warehouse-management-system)
   9. [🔢 Main Program 2: Mission Management System](#-main-program-2-mission-management-system)
-  10. [💾 Updated Backup](#-updated-backup)
+  10. [💾 Backup 4](#-backup-4)
 
 ---
 
@@ -399,7 +399,7 @@ It reads data from sources like CSV files, processes it, and runs SQL commands t
 
 ---
 
-## 💾 Backup
+## 💾 Backup 1
 ### 📽 Video of Backup implementation demo:
 To download and watch the video click [here](https://github.com/eliel-monfort/DBProject_328269121_329114573/raw/refs/heads/main/Stage_1/Backup/Video/Backup_Video.mp4).
 
@@ -1361,7 +1361,7 @@ This confirms the ROLLBACK successfully reverted all changes.
 
 ---
 
-## 💾 Updated Backup
+## 💾 Backup 2
 
 During this stage, we performed multiple updates and inserts into the database. To preserve the current state and ensure data consistency, we now create a full **second** backup.
 
@@ -1809,7 +1809,7 @@ GROUP BY action_type;
 
 ---
 
-## 💾 Updated Backup
+## 💾 Backup 3
 
 During this stage, we performed multiple updates and inserts into the database. To preserve the current state and ensure data consistency, we now create a full **third** backup.
 
@@ -2663,6 +2663,6 @@ END $$;
 
 ---
 
-## 💾 Updated Backup
+## 💾 Backup 4
 
 A new backup named **ACLD_Backup_3** was created after successful testing of all programs.
