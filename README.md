@@ -15,7 +15,7 @@
 ## 📚 Table of Contents
 
 A. [🏁 Stage 1](#-Stage-1)
-  1. [📘 Introduction](#-introduction)
+  1. [📘 Introduction A](#-introduction-A)
   2. [🗂️ Entities and Attributes](#entities-and-attributes)
   3. [🔗 Relationships](#-relationships)
   4. [🧠 Design Decisions](#-design-decisions)
@@ -24,7 +24,7 @@ A. [🏁 Stage 1](#-Stage-1)
   7. [💾 Backup](#-backup-and-restore)
 
 B. [🏁 Stage 2](#-Stage-2)
-  1. [📘 Stage B Overview](#-stage-b-overview)
+  1. [📘 Introduction B](#-introduction-b)
   2. [📊 SELECT Queries](#-select-queries)
   3. [🧹 DELETE Queries](#-delete-queries)
   4. [🔁 UPDATE Queries](#-update-queries)
@@ -33,7 +33,7 @@ B. [🏁 Stage 2](#-Stage-2)
   7. [💾 Updated Backup](#-updated-backup)
 
 C. [🏁 Stage 3](#-Stage-3)
-  1. [📘 Introduction](#-introduction)
+  1. [📘 Introduction C](#-introduction-c)
   2. [🔁 Reverse Engineering](#-reverse-engineering)
   3. [🔗 Integration](#-integration)
   4. [🧩 Final Diagrams](#-final-diagrams)
@@ -41,7 +41,7 @@ C. [🏁 Stage 3](#-Stage-3)
   6. [💾 Updated Backup](#-updated-backup)
 
 D. [🏁 Stage 4](#-Stage-4)
-  1. [📘 Introduction](#-introduction)
+  1. [📘 Introduction D](#-introduction-d)
   2. [📊 Function: get_warehouses_status](#-function-get_warehouses_status)
   3. [📊 Function: get_mission_preparedness](#-function-get_mission_preparedness)
   4. [🔧 Procedure: transfer_warehouse_entity](#-procedure-transfer_warehouse_entity)
@@ -56,7 +56,7 @@ D. [🏁 Stage 4](#-Stage-4)
 
 # 🏁 Stage 1
 
-## 📘 Introduction
+## 📘 Introduction A
 
 This project is a database for the **logistics unit of the Armored Corps**.
 
@@ -414,7 +414,7 @@ By using the backup file, we could work on different parts without messing up ea
 
 # 🏁 Stage 2
 
-## 📘 Stage B Overview
+## 📘 Introduction B
 
 In Stage B of the project, we focused on advanced database operations including complex queries, data manipulation (updates and deletions), transactional controls (rollback/commit), and enforcement of new constraints.
 
@@ -1369,7 +1369,7 @@ During this stage, we performed multiple updates and inserts into the database. 
 
 # 🏁 Stage 3
 
-## 📘 Introduction
+## 📘 Introduction C
 
 In this part of the project, we perform **reverse engineering** on another team’s database, and then **integrate** it with our own.
 
@@ -1817,7 +1817,7 @@ During this stage, we performed multiple updates and inserts into the database. 
 
 # 🏁 Stage 4
 
-## 📘 Introduction
+## 📘 Introduction D
 
 In this stage of the project, we implemented several PL/pgSQL programs to extend the functionality of our integrated database system. This includes:
 
