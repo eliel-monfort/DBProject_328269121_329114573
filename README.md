@@ -1937,10 +1937,11 @@ Generates a report about how prepared each mission/unit is, based on vehicles an
 ### SQL Code:
 
 ```sql
-CREATE OR REPLACE FUNCTION get_mission_preparedness(min_ready_vehicles INT DEFAULT 2)
-RETURNS refcursor AS $$
-DECLARE
-    ref refcursor;
+CREATE OR REPLACE FUNCTION get_mission_preparedness(
+    INOUT cur refcursor,
+    min_ready_vehicles INT DEFAULT 2
+)
+AS $$
 BEGIN
     -- Create temp table for the report
     CREATE TEMP TABLE tmp_mission_report AS
@@ -1995,8 +1996,7 @@ BEGIN
     LEFT JOIN soldier_counts sc ON mu.unit_ID = sc.unit_ID;
 
     -- Open and return the report cursor
-    OPEN ref FOR SELECT * FROM tmp_mission_report;
-    RETURN ref;
+    OPEN cur FOR SELECT * FROM tmp_mission_report;
 END;
 $$ LANGUAGE plpgsql;
 ```
