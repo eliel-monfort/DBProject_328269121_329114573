@@ -4,7 +4,9 @@ CREATE OR REPLACE FUNCTION get_mission_preparedness(
 )
 AS $$
 BEGIN
-    -- Create temp table for the report
+    -- Drop temp table if exists
+    DROP TABLE IF EXISTS tmp_mission_report;
+
     CREATE TEMP TABLE tmp_mission_report AS
     WITH mission_units AS (
         SELECT 
@@ -56,7 +58,6 @@ BEGIN
     LEFT JOIN vehicle_counts vc ON mu.mission_ID = vc.mission_ID
     LEFT JOIN soldier_counts sc ON mu.unit_ID = sc.unit_ID;
 
-    -- Open and return the report cursor
     OPEN cur FOR SELECT * FROM tmp_mission_report;
 END;
 $$ LANGUAGE plpgsql;
